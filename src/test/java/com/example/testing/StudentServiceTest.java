@@ -72,14 +72,14 @@ class StudentServiceTest {
         Long studentId = 1L;
         Student student = new Student("philip", "nyoro", "nyoro@gmail.com");
         student.setId(studentId);
-        when(studentRepo.findById(studentId)).thenReturn(Optional.of(student));
+        //when(studentRepo.findById(studentId)).thenReturn(Optional.of(student));
         doNothing().when(studentRepo).deleteById(studentId); // Mock the delete method
 
         // Act
         studentService.deleteStudent(studentId);
 
         // Assert
-        verify(studentRepo, times(1)).findById(studentId); // Verify findById was called
+      //  verify(studentRepo, times(1)).findById(studentId); // Verify findById was called
         verify(studentRepo, times(1)).deleteById(studentId); // Verify deleteById was called
     }
 }

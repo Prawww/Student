@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  mypostgres:
+    container_name: mypostgres
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: anamkara78
+      POSTGRES_DB: testing
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    networks:
+      - springbootNet
+
+  springboot:
+    container_name: springboot
+    build:
+      context: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mypostgres
+    networks:
+      - springbootNet
+
+volumes:
+  postgres:
+
+networks:
+  springbootNet:
+    driver: bridge

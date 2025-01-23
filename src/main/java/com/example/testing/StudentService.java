@@ -34,6 +34,8 @@ public class StudentService {
         return studentMapper.fromStudentToDto(savedStudent);
     }
 
-
+    public void deleteStudent(Long id){
+        studentRepo.deleteById(id);
+    }
 
 }
